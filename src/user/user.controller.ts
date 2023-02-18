@@ -7,13 +7,8 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
-  async createUser(@Body() body: { email: string; password: string }) {
-    const user = await this.userService.createUser(body.email, body.password);
+  async createUser(@Body() body: { user: string; password: string }) {
+    const user = await this.userService.createUser(body.user, body.password);
     return { user };
-  }
-
-  @Get()
-  getUser(): string {
-    return this.userService.getUser();
   }
 }
